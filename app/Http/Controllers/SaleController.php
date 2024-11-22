@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreSaleRequest;
 use App\Http\Requests\UpdateSaleRequest;
 use App\Models\Sale;
+use Illuminate\Support\Facades\Auth;
 
 class SaleController extends Controller
 {
@@ -27,9 +28,22 @@ class SaleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSaleRequest $request)
+    public function store($p_id)
     {
-        //
+        if (Auth::user()->is_admin) {
+            return back();
+
+            $cliente = Auth::user();
+
+            $venda = new Sale();
+            $venda->client_id = $cliente->id;
+            $venda->product_id = $p_id;
+            $venda->date = now();
+
+            $venda->save();
+
+            return redirect(route('sales.index'));
+        }
     }
 
     /**

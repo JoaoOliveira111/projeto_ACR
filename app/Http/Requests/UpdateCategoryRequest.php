@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+
 
 class UpdateCategoryRequest extends FormRequest
 {
@@ -11,7 +14,12 @@ class UpdateCategoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        if ( Auth::user() == null)
+            return false;
+        if (!Auth::user()->isAdmin)
+            return false;
+
+        return true;
     }
 
     /**
@@ -22,7 +30,14 @@ class UpdateCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required | max:255',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'O Nome da Categoria é obrigatório.',
         ];
     }
 }

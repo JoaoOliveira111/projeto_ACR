@@ -1,7 +1,15 @@
 @extends('layouts.loja_info')
 
 @section('content')
-    <h1>Produtos</h1>
+    <h3>
+        <a href="{{ route('products.index') }}" @if ($idCategoriaAtiva == 0) class="selected" @endif>Todos os
+            Produtos</a>
+        @foreach ($categorias as $categoria)
+            <a href="{{ route('categories.products', $categoria->id) }}"
+                @if ($categoria->id == $idCategoriaAtiva) class="selected" @endif>{{ $categoria->Name }}</a>
+        @endforeach
+    </h3>
+
 
     <div id="contentBox">
 
@@ -24,7 +32,10 @@
                         </div>
                     </a>
 
-                    <div class="button">
+                    <div class="button" onclick="submitForm('buy_{{ $produto->id}}')">
+                        <form id="buy_{{ $produto->id}}" action="{{ route('sales.store', $produto->id) }}" method="POST">
+                            @csrf
+                        </form>
                         Comprar
                     </div>
                 </div>

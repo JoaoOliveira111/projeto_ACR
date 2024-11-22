@@ -15,14 +15,21 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function indexByCategory($id)
+    {
+        $categorias = Category::all();
+        if ($id == 0) {
+            $produtos = Product::all();
+        } else {
+            $categoria = Category::find($id);
+            $produtos = $categoria->products;
+        }
+        return view('products.index', ['produtos' => $produtos, 'categorias' => $categorias, 'idCategoriaAtiva' => $id]);
+    }
+
     public function index()
     {
-        $produtos = Product::all();
-
-
-
-
-        return view('products.index', ['produtos' => $produtos]);
+        return $this->indexByCategory(0);
     }
 
     /**
@@ -97,8 +104,7 @@ class ProductController extends Controller
         $produto = Product::find($id);
 
         $url = $produto->img;
-        if($request-> has('img'))
-        {
+        if ($request->has('img')) {
             $image = $request->file('img');
 
             $iname = "prod_" . time();
@@ -109,7 +115,6 @@ class ProductController extends Controller
 
             $image->storeAs($folder, $fileName, 'public');
             $url = "/Storage/" . $filePath;
-
         }
 
         $produto->Name = $request->name;
@@ -123,9 +128,6 @@ class ProductController extends Controller
 
 
         return redirect(route('products.show', $produto->id));
-        
-
-
     }
 
     /**

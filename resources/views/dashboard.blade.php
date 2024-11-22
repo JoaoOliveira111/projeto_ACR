@@ -6,14 +6,20 @@
         <a href="{{ route('products.index') }}">
             <p>Ver produtos</p>
         </a>
-        <a href="{{ route('products.create') }}">
-            <p>Criar produtos</p>
-        </a>
-        <a href="{{ route('categories.index') }}">
-            <p>Ver categorias</p>
-        </a>
-        <a href="{{ route('categories.create') }}">
-            <p>Criar Categorias</p>
-        </a>
+        @if (Auth::user()->is_admin)
+            <a href="{{ route('products.create') }}">
+                <p>Criar produtos</p>
+            </a>
+            <a href="{{ route('categories.index') }}">
+                <p>Ver categorias</p>
+            </a>
+            <a href="{{ route('categories.create') }}">
+                <p>Criar Categorias</p>
+            </a>
+        @else
+            <a href="{{ route('sales.index') }}">
+                <p>Ver compras</p>
+            </a>
+        @endif
     </div>
 @endsection

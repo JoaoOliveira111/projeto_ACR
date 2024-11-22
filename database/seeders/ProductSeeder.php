@@ -34,7 +34,7 @@ class ProductSeeder extends Seeder
         DB::table('products')->insert([
             'name' => 'Google Pixel 8',
             'description' => 'Google Pixel 8, 128GB',
-            'img' => 'img/3.jpg',
+            'img' => '/img/3.jpg',
             'cost' => 850,
             'owner_id' => 1,
             'category_id' => 1,
@@ -43,7 +43,7 @@ class ProductSeeder extends Seeder
         DB::table('products')->insert([
             'name' => 'OnePlus 12',
             'description' => 'OnePlus 12, 256GB',
-            'img' => 'img/4.jpg',
+            'img' => '/img/4.jpg',
             'cost' => 900,
             'owner_id' => 1,
             'category_id' => 1,
@@ -53,7 +53,7 @@ class ProductSeeder extends Seeder
         DB::table('products')->insert([
             'name' => 'Samsung fold 6',
             'description' => 'Samsung fold 6, 256GB',
-            'img' => 'img/5.jpg',
+            'img' => '/img/5.jpg',
             'cost' => 1200,
             'owner_id' => 1,
             'category_id' => 1,
@@ -63,7 +63,7 @@ class ProductSeeder extends Seeder
         DB::table('products')->insert([
             'name' => 'Samsung Galaxy s23',
             'description' => 'Samsung Galaxy s23, 256GB',
-            'img' => 'img/6.jpg',
+            'img' => '/img/6.jpg',
             'cost' => 1000,
             'owner_id' => 1,
             'category_id' => 1,
@@ -72,7 +72,25 @@ class ProductSeeder extends Seeder
         DB::table('products')->insert([
             'name' => 'Ipad 10',
             'description' => 'Ipad 10, 128GB',
-            'img' => 'img/7.jpg',
+            'img' => '/img/7.jpg',
+            'cost' => 1200,
+            'owner_id' => 1,
+            'category_id' => 2,
+        ]);
+
+        DB::table('products')->insert([
+            'name' => 'Samsung Tab 7',
+            'description' => 'Samsung Tab 7, 256GB',
+            'img' => '/img/8.jpg',
+            'cost' => 1200,
+            'owner_id' => 1,
+            'category_id' => 2,
+        ]);
+
+        DB::table('products')->insert([
+            'name' => 'Lenovo M10',
+            'description' => 'Lenovo M10, 128GB',
+            'img' => '/img/9.jpg',
             'cost' => 1200,
             'owner_id' => 1,
             'category_id' => 2,

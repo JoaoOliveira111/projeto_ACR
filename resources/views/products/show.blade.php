@@ -22,7 +22,7 @@
         </div>
 
         <div class = "productDetailsCost">
-            <h2{{ $produto->Cost }}</h2>
+            <h2{{ $produto->Cost }}< /h2>
         </div>
 
         <div class = "productDetailsButtons">
@@ -32,7 +32,10 @@
                 </div>
             </a>
 
-            <div class="button">
+            <div class="button" onclick="submitForm('buy_{{ $produto->id }}')">
+                <form id="buy_{{ $produto->id }}" action="{{ route('sales.store', $produto->id) }}" method="POST">
+                    @csrf
+                </form>
                 Comprar
             </div>
         </div>

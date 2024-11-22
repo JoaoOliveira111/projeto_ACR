@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -13,7 +14,13 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        if (! Auth::user()->isAdmin)
+            return back();
+
+
         $categorias = Category::all();
+
+        
         return view('categories.index', ['categorias' => $categorias]);
     }
 
@@ -58,9 +65,15 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCategoryRequest $request, Category $category)
+    public function update(UpdateCategoryRequest $request, $id)
     {
-        //
+        $categoria = Category::find($id);
+
+        $categoria->Name = $request->name;
+
+        $categoria->save();
+
+        return redirect(route('categories.index'));
     }
 
     /**
