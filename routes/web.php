@@ -7,18 +7,15 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SaleController;
 use App\Models\Product;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
-Route::get('/produtos', [ProductController::class, 'index'])->name('products.index');
+Route::get('/', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/create', [ProductController::class, 'create'])->middleware('auth')->name('products.create');
 Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->middleware('auth')->name('products.edit');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 Route::post('/products/store', [ProductController::class, 'store'])->middleware('auth')->name('products.store');
 Route::put('/products/update/{id}', [ProductController::class, 'update'])->middleware('auth')->name('products.update');
-Route::delete('/products/{id}', [ProductController::class, 'destroy'])->middleware('auth')->name('products.destroy');
+Route::delete('products/{id}', [ProductController::class, 'destroy'])->middleware('auth')->name('products.destroy');
 
 Route::get('/categorias', [CategoryController::class, 'index'])->middleware('auth')->name('categories.index');
 Route::get('/categorias/create', [CategoryController::class, 'create'])->middleware('auth')->name('categories.create');

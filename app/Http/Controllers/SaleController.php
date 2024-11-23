@@ -14,7 +14,14 @@ class SaleController extends Controller
      */
     public function index()
     {
-        //
+        if (!Auth::user()->is_admin)
+            return back();
+
+
+        $user = Auth::user();
+        $vendas = $user->sales;
+
+        return view('sales.index', ['compras' => $vendas]);
     }
 
     /**
@@ -51,7 +58,7 @@ class SaleController extends Controller
      */
     public function show(Sale $sale)
     {
-        //
+        
     }
 
     /**

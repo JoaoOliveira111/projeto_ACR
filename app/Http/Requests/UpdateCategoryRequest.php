@@ -16,7 +16,7 @@ class UpdateCategoryRequest extends FormRequest
     {
         if ( Auth::user() == null)
             return false;
-        if (!Auth::user()->isAdmin)
+        if (!Auth::user()->is_admin)
             return false;
 
         return true;

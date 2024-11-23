@@ -23,7 +23,7 @@
             @endisset
             <h1>Nome de Categoria</h1>
             <input id="name" name="name" type="text" placeholder="Nome da Categoria"
-                value="{{ old('name') == null && isset($categoria) ? $categoria->Name : old('name') }}">
+                value="{{ old('name')== null && isset($categoria)?$categoria->Name :old('name') }}">
         </form>
         <div class="createCategoryButtons">
             <a href ="{{ route('dashboard') }}">

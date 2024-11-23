@@ -14,13 +14,13 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        if (! Auth::user()->isAdmin)
+        if (! Auth::user()->is_admin)
             return back();
 
 
         $categorias = Category::all();
 
-        
+
         return view('categories.index', ['categorias' => $categorias]);
     }
 
@@ -81,6 +81,13 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        if (!Auth::user()->is_admin) {
+            return redirect()->route('categories.index');
+        }
+
+        $category->delete();
+
+        return redirect()->route('categories.index');
     }
+
 }

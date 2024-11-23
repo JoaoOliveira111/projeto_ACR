@@ -23,8 +23,8 @@ class UserSeeder extends Seeder
 
         DB::table('users')->insert([
             'name' => 'client',
-            'email' => 'client@lojasmart.pt',
-            'password' => Hash::make('admin'),
+            'email' => 'client@lojainfo.pt',
+            'password' => Hash::make('client'),
         ]);
     }
 }
