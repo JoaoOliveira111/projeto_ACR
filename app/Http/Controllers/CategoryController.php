@@ -79,15 +79,16 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+
+    public function destroy($id)
     {
-        if (!Auth::user()->is_admin) {
-            return redirect()->route('categories.index');
-        }
+        if (!Auth::user()->is_admin)
+            return back();
 
-        $category->delete();
+        $product = Category::find($id);
+        $product->delete();
 
-        return redirect()->route('categories.index');
+        return redirect(route('products.index'));
     }
 
 }

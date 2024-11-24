@@ -37,20 +37,20 @@ class SaleController extends Controller
      */
     public function store($p_id)
     {
-        if (Auth::user()->is_admin) {
+        if (Auth::user()->is_admin)
             return back();
 
-            $cliente = Auth::user();
+        $cliente = Auth::user();
 
-            $venda = new Sale();
-            $venda->client_id = $cliente->id;
-            $venda->product_id = $p_id;
-            $venda->date = now();
+        $venda = new Sale();
+        $venda->client_id = $cliente->id;
+        $venda->product_id = $p_id;
+        $venda->date = now();
 
-            $venda->save();
+        $venda->save();
 
-            return redirect(route('sales.index'));
-        }
+        return redirect(route('sales.index'));
+
     }
 
     /**
@@ -58,7 +58,7 @@ class SaleController extends Controller
      */
     public function show(Sale $sale)
     {
-        
+
     }
 
     /**

@@ -1,11 +1,10 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SaleController;
-use App\Models\Product;
 
 
 

@@ -8,58 +8,80 @@
     @endisset
     <div id="createProductBox">
         <form id="createProductForm" method="POST"
-            @isset($produto)
+              @isset($produto)
                 action="{{ route('products.update', $produto->id) }}"
-            @else
+              @else
                 action="{{ route('products.store') }}"
-            @endisset
-            enctype="multipart/form-data">
+              @endisset
+              enctype="multipart/form-data">
             @csrf
             @isset($produto)
                 @method('PUT')
             @endisset
+
             <h1>Nome do Produto</h1>
-            <input id="name" name="name" type="text" placeholder="Nome do Produto" value="{{ old('name') }}"
-                value="{{ old('name') == null && isset($produto) ? $produto->Name : old('name') }}">
+            <input id="name" name="name" type="text" placeholder="Nome do Produto"
+                   value="{{ old('name', $produto->Name ?? '') }}">
+            @error('name')
+                <p>{{ $message }}</p>
+            @enderror
+
             <h1>Descrição</h1>
             <input id="desc" name="desc" type="text" placeholder="Descrição do Produto"
-                value="{{ old('desc') == null && isset($produto) ? $produto->Description : old('desc') }}">
+                   value="{{ old('desc', $produto->Description ?? '') }}">
+            @error('desc')
+                <p>{{ $message }}</p>
+            @enderror
+
             <h1>Categoria</h1>
-            <select name="cat" id="cat" value="{{ old('cat') }}">
+            <select name="cat" id="cat">
                 @foreach ($categorias as $categoria)
-                    <option value="{{ $categoria->id }}" @if ((isset($produto) && old('cat') == null && $produto->category_id == $categoria->id) || old('cat') == $categoria->id) selected @endif>
-                        {{ $categoria->Name }}</option>
+                    <option value="{{ $categoria->id }}"
+                            @selected(old('cat', $produto->category_id ?? '') == $categoria->id)>
+                        {{ $categoria->Name }}
+                    </option>
                 @endforeach
             </select>
+            @error('cat')
+                <p>{{ $message }}</p>
+            @enderror
+
             <h1>Valor</h1>
-            <input id="cost" name="cost" type="number" placeholder="Valor do Produto" value="{{ old('cost') }}"
-                value="{{ old('cost') == null && isset($produto) ? $produto->Cost : old('cost') }}">
+            <input id="cost" name="cost" type="number" placeholder="Valor do Produto"
+                   value="{{ old('cost', $produto->Cost ?? '') }}">
+            @error('cost')
+                <p>{{ $message }}</p>
+            @enderror
+
             <h1>Imagem</h1>
             <input id="img" name="img" type="file">
+            @error('img')
+                <p>{{ $message }}</p>
+            @enderror
         </form>
+
         @isset($produto)
             <div id="editProductImage">
-                <img src="{{ $produto->img }}">
+                <img src="{{ asset($produto->img) }}" alt="Imagem do Produto">
                 <p>Selecione uma nova imagem para substituir a atual</p>
             </div>
         @endisset
+
         <div class="createProductButton">
             <a href="{{ route('products.index') }}">
-                <div class="button">
-                    Voltar
-                </div>
+                <div class="button">Voltar</div>
             </a>
-            <div class="button" onclick="submitForm('createProductForm')">
+            <div class="button" onclick="document.getElementById('createProductForm').submit()">
                 Gravar
             </div>
+
             @if (count($errors) > 0)
-                @foreach ($errors->all() as $error)
-                    <p>{{ $error }}</p>
-                @endforeach
+                <div class="errors">
+                    @foreach ($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
             @endif
         </div>
-
-
-
     </div>
 @endsection

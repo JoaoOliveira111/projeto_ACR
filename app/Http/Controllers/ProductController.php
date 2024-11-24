@@ -38,9 +38,9 @@ class ProductController extends Controller
     public function create()
     {
 
-        if (! Auth::user()->is_admin) {
+        if (! Auth::user()->is_admin)
             return back();
-        }
+        
         $categorias = Category::all();
         return view('products.create', ['categorias' => $categorias]);
     }
@@ -91,9 +91,14 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        if (! Auth::user()->is_admin) {
+            return back();
+        }
+        $produto = Product::find($id);
+        $categorias = Category::all();
+        return view('products.create', ['categorias' => $categorias, 'produto' => $produto]);
     }
 
     /**
@@ -104,17 +109,18 @@ class ProductController extends Controller
         $produto = Product::find($id);
 
         $url = $produto->img;
-        if ($request->has('img')) {
+        if ($request->has('img'))
+        {
             $image = $request->file('img');
 
-            $iname = "prod_" . time();
+            $iname = "prod_" .time();
             $folder = "/img/produtos/";
-            $fileName = $iname . '.' . $image->getClientOriginalExtension();
-            $filePath = $folder . $fileName;
+            $fileName = $iname .'.'.$image->getClientOriginalExtension();
+            $filePath = $folder.$fileName;
 
 
             $image->storeAs($folder, $fileName, 'public');
-            $url = "/Storage/" . $filePath;
+            $url = "/Storage/" .$filePath;
         }
 
         $produto->Name = $request->name;

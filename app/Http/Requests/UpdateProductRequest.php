@@ -12,10 +12,11 @@ class UpdateProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        if(! Auth::user()->null)
+        if(Auth::user() == null)
             return false;
         if(! Auth::user()->is_admin)
             return false;
+
         return true;
     }
 
@@ -27,8 +28,8 @@ class UpdateProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|max 255',
-            'desc' => 'required|max 255',
+            'name' => 'required|max:255',
+            'desc' => 'required|max:255',
             'cat' => 'required',
             'cost' => 'required|max:20',
             'img' => 'mines:jpeg,jpg,png,gif|max:500',

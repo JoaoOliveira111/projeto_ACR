@@ -10,7 +10,7 @@
 
 
     <div id="createCategoryBox">
-        <form id="createCategoryForm" method="POST"
+        <form id="createCategoryForm" method="POST" action="{{ route('categories.store') }}">
             @isset($categoria)
                 action ="{{ route('categories.update', $categoria->id) }}"
             @else

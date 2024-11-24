@@ -41,7 +41,7 @@
         </div>
 
         @auth
-            @if (Auth::user()->isAdmin)
+            @if (Auth::user()->is_admin)
                 <div class="deleteButton2" onclick="submitForm('destroy_{{ $produto->id }}')"
                     title="Eliminar {{ $produto->Name }}">
                     <img src="/img/delete.svg">
