@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
-use PhpParser\Node\Expr\FuncCall;
+
 
 class StoreProductRequest extends FormRequest
 {
@@ -13,9 +13,9 @@ class StoreProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        if (Auth::user()== null)
+        if (Auth::user() == null)
             return false;
-        if (Auth::user()->is_admin)
+        if (! Auth::user()->is_admin)
             return false;
 
         return true;

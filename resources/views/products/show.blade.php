@@ -14,16 +14,17 @@
         </div>
 
         <div class = "productDetailsCategory">
-            <p> Categoria:{{ $categoria->Name }}"</p>
+            <p> Categoria:{{ $categoria->Name }}</p>
         </div>
 
         <div class = "productDetailsDescription">
             <p>{{ $produto->Description }}</p>
         </div>
 
-        <div class = "productDetailsCost">
-            <h2{{ $produto->Cost }}< /h2>
+        <div class="productDetailsCost">
+            <p>{{ $produto->Cost }} €</p>
         </div>
+
 
         <div class = "productDetailsButtons">
             <a href="{{ route('products.index') }}">

@@ -19,10 +19,10 @@
                     <img src="{{ $produto->img }}">
                 </div>
                 <div class = "productName">
-                    <h2>{{ $produto->Name }}"</h2>
+                    <h2>{{ $produto->Name }}</h2>
                 </div>
                 <div class = "productCost">
-                    <h2>{{ $produto->Cost }}"</h2>
+                    <h2>{{ number_format($produto->Cost, 2, ',', '.') }} €</h2>
                 </div>
 
                 <div class = "productButtons">
@@ -32,8 +32,8 @@
                         </div>
                     </a>
 
-                    <div class="button" onclick="submitForm('buy_{{ $produto->id}}')">
-                        <form id="buy_{{ $produto->id}}" action="{{ route('sales.store', $produto->id) }}" method="POST">
+                    <div class="button" onclick="submitForm('buy_{{ $produto->id }}')">
+                        <form id="buy_{{ $produto->id }}" action="{{ route('sales.store', $produto->id) }}" method="POST">
                             @csrf
                         </form>
                         Comprar

@@ -14,7 +14,7 @@ class SaleController extends Controller
      */
     public function index()
     {
-        if (!Auth::user()->is_admin)
+        if (Auth::user()->is_admin)
             return back();
 
 
@@ -50,16 +50,12 @@ class SaleController extends Controller
         $venda->save();
 
         return redirect(route('sales.index'));
-
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Sale $sale)
-    {
-
-    }
+    public function show(Sale $sale) {}
 
     /**
      * Show the form for editing the specified resource.

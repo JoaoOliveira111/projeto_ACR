@@ -38,9 +38,9 @@ class ProductController extends Controller
     public function create()
     {
 
-        if (! Auth::user()->is_admin)
+        if (! Auth::user()->is_admin )
             return back();
-        
+
         $categorias = Category::all();
         return view('products.create', ['categorias' => $categorias]);
     }
@@ -50,6 +50,8 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
+        
+
         $url = "";
         if ($request->has('img')) {
             $image = $request->file('img');

@@ -22,13 +22,8 @@ class CategorySeeder extends Seeder
             'name' => 'Tablets',
         ]);
 
-        DB::table('categories')->insert([
-            'name' => 'Carregadores',
-        ]);
 
-        DB::table('categories')->insert([
-            'name' => 'Capas',
-        ]);
+
 
 
     }
