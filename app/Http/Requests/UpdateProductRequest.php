@@ -12,9 +12,9 @@ class UpdateProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        if(Auth::user() == null)
+        if (Auth::user() == null)
             return false;
-        if(! Auth::user()->is_admin)
+        if (! Auth::user()->is_admin)
             return false;
 
         return true;
@@ -32,7 +32,7 @@ class UpdateProductRequest extends FormRequest
             'desc' => 'required|max:255',
             'cat' => 'required',
             'cost' => 'required|max:20',
-            'img' => 'mines:jpeg,jpg,png,gif|max:500',
+            'img' => 'mimes:jpeg,jpg,png,gif|max:500',
         ];
     }
 
@@ -50,6 +50,5 @@ class UpdateProductRequest extends FormRequest
             'img.max' => 'O arquivo deve ter no máximo 500KB',
 
         ];
-
     }
 }

@@ -595,10 +595,10 @@ footer
 
 .contact-form-group input,
 .contact-form-group textarea {
-    width: 100%;
-    padding: 1rem;
+    width: 90%;
+    padding: 0.5rem;
     border-radius: 8px;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     font-size: 1rem;
 }
 
