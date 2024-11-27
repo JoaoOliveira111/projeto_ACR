@@ -33,7 +33,7 @@ class StoreProductRequest extends FormRequest
             'desc' => 'required|max:255',
             'cat' => 'required',
             'cost' => 'required|max:20',
-            'img' => 'required|mimes:jpeg,jpg,png,gif|max:500',
+            'img' => 'required|mimes:jpeg,jpg,png,gif|max:2048',
 
         ];
     }

@@ -5,6 +5,8 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SaleController;
+use App\Http\Controllers\ContactController;
+
 
 
 
@@ -25,10 +27,22 @@ Route::put('/categorias/update/{id}', [CategoryController::class, 'update'])->mi
 Route::delete('/categorias/{id}', [CategoryController::class, 'destroy'])->middleware('auth')->name('categories.destroy');
 
 Route::get('/vendas', [SaleController::class, 'index'])->middleware('auth')->name('sales.index');
-Route::post('/vendas/store/{p_id}',[SaleController::class,'store'])-> middleware('auth')->name('sales.store');
+Route::post('/vendas/store/{p_id}', [SaleController::class, 'store'])->middleware('auth')->name('sales.store');
+
+Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
 
 
-Route::get('/dashboard', function () {return view('dashboard'); })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
+
+
 
 require __DIR__ . '/auth.php';

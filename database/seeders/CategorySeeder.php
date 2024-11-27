@@ -22,6 +22,10 @@ class CategorySeeder extends Seeder
             'name' => 'Tablets',
         ]);
 
+        DB::table('categories')->insert([
+            'name' => 'Acessórios',
+        ]);
+
 
 
 

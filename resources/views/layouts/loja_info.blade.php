@@ -12,26 +12,28 @@
 
 <body>
     <header>
-    <h1><a href="{{ route('products.index') }}">Loja de Smartphones </a></h1>
+        <h1><a href="{{ route('products.index') }}">Loja de Smartphones</a></h1>
+
         @guest
             @if (Route::currentRouteName() != 'login' && Route::currentRouteName() != 'register')
-                <a href="{{ route('login') }}" >
+                <a href="{{ route('login') }}">
                     <div id="accessButton">Entrar</div>
                 </a>
             @endif
         @endguest
+
         @auth
             <div id="accessButton" onclick="submitForm('logout')">
                 <form id="logout" action="{{ route('logout') }}" method="post">@csrf</form>
                 Sair
             </div>
             <div id="userGreet">
-                <p>Bem-vindo, {{ auth()->user()->name }}</p>
+                <a href="{{ route('dashboard') }}">
+                    <p>Bem-vindo, {{ auth()->user()->name }}</p>
+                </a>
             </div>
 
         @endauth
-
-
     </header>
 
     <div id="content">
@@ -39,9 +41,8 @@
     </div>
 
     <footer>
-        <p>João Oliveira &copy; 2024</p>
+        <p>Contactos - <a href="{{ route('contact.create') }}">João Oliveira &copy; 2024</a></p>
     </footer>
-
 </body>
 
 </html>

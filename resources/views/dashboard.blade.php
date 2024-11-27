@@ -6,6 +6,7 @@
         <a href="{{ route('products.index') }}">
             <p>Ver produtos</p>
         </a>
+        </a>
         @if (Auth::user()->is_admin)
             <a href="{{ route('products.create') }}">
                 <p>Criar produtos</p>

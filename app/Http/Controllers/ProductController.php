@@ -38,7 +38,7 @@ class ProductController extends Controller
     public function create()
     {
 
-        if (! Auth::user()->is_admin )
+        if (! Auth::user()->is_admin)
             return back();
 
         $categorias = Category::all();
@@ -50,7 +50,6 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        
 
         $url = "";
         if ($request->has('img')) {
@@ -72,8 +71,6 @@ class ProductController extends Controller
         $produto->Cost = $request->cost;
         $produto->category_id = $request->cat;
         $produto->owner_id = Auth::user()->id;
-
-
 
         $produto->save();
 
@@ -111,18 +108,17 @@ class ProductController extends Controller
         $produto = Product::find($id);
 
         $url = $produto->img;
-        if ($request->has('img'))
-        {
+        if ($request->has('img')) {
             $image = $request->file('img');
 
-            $iname = "prod_" .time();
+            $iname = "prod_" . time();
             $folder = "/img/produtos/";
-            $fileName = $iname .'.'.$image->getClientOriginalExtension();
-            $filePath = $folder.$fileName;
+            $fileName = $iname . '.' . $image->getClientOriginalExtension();
+            $filePath = $folder . $fileName;
 
 
             $image->storeAs($folder, $fileName, 'public');
-            $url = "/Storage/" .$filePath;
+            $url = "/Storage/" . $filePath;
         }
 
         $produto->Name = $request->name;
@@ -133,7 +129,6 @@ class ProductController extends Controller
         $produto->owner_id = Auth::user()->id;
 
         $produto->save();
-
 
         return redirect(route('products.show', $produto->id));
     }

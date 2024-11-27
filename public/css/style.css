@@ -1,20 +1,16 @@
 html {
     --s: 82px; /* Control the size */
-    --c1: #b2b2b2;
-    --c2: #ffffff;  /* White */
-    --c3: #f5f5f5;  /* Light gray */
-    --accent:#4d4d4d;; /* Accent color - Orange */
+    --c1: #4a4747; /* Gray */
+    --c2: #ffffff; /* White */
+    --c3: #f5f5f5; /* Light gray */
+    --accent: #4d4d4d; /* Accent color */
 
-    --_g: var(--c3) 0 120deg,#0000 0;
-    background:
-      conic-gradient(from -60deg at 50% calc(100%/3),var(--_g)),
-      conic-gradient(from 120deg at 50% calc(200%/3),var(--_g)),
-      conic-gradient(from  60deg at calc(200%/3),var(--c3) 60deg,var(--c2) 0 120deg,#0000 0),
-      conic-gradient(from 180deg at calc(100%/3),var(--c1) 60deg,var(--_g)),
-      linear-gradient(90deg,var(--c1)   calc(100%/6),var(--c2) 0 50%,
-                            var(--c1) 0 calc(500%/6),var(--c2) 0);
-    background-size: calc(1.732*var(--s)) var(--s);
-  }
+    /* Usando linear-gradient para um fundo degradê suave entre as cores */
+    background: linear-gradient(to bottom, var(--c1), var(--c3), var(--c2));
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 
 /* style */
 
@@ -354,6 +350,8 @@ footer
     width: 50%;
 }
 
+
+
 .productDetailsImage
 {
     position: fixed;
@@ -379,6 +377,11 @@ footer
     font-weight: bolder;
     color: #4d4d4d;
     text-align: center;
+}
+
+.selected {
+    background-color: #fc3730; /* Cor de fundo ao selecionar */
+    color: black; /* Cor do texto ao selecionar */
 }
 
 .productDetailsName h2
@@ -554,4 +557,75 @@ footer
     display: inline-block;
     overflow: hidden;
 }
+
+.contact-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 1px;
+}
+
+.contact-container {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.contact-container h2 {
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.contact-form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.contact-form-group label {
+    font-size: 1.2rem;
+    color: var(--accent);
+}
+
+.contact-form-group input,
+.contact-form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.contact-form-group textarea {
+    resize: vertical;
+}
+
+.contact-buttons {
+    margin-top: 2rem;
+}
+
+.contact-button {
+    background-color: var(--accent);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-button:hover {
+    background-color: #fc3730;
+}
+
+
+
 

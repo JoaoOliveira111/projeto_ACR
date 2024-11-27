@@ -10,7 +10,7 @@
         </div>
 
         <div class = "productDetailsName">
-            <h2>{{ $produto->name }}</h2>
+            <h2>{{ $produto->Name }}</h2>
         </div>
 
         <div class = "productDetailsCategory">

@@ -71,29 +71,56 @@ class ProductSeeder extends Seeder
 
         DB::table('products')->insert([
             'name' => 'Ipad 10',
-            'description' => 'Apple iPad 10 com 128GB de armazenamento. Tela Retina de 10,2 polegadas, processador A14 Bionic e compatível com a Apple Pencil de 1ª geração.',
+            'description' => 'Apple iPad 10 com 128GB de armazenamento.Tela Retina de 10,2 polegadas, processador A14 Bionic e compatível com a Apple Pencil de 1ª geração.',
             'img' => '/img/7.jpg',
-            'cost' => 1200,
+            'cost' => 1150,
             'owner_id' => 1,
             'category_id' => 2,
         ]);
 
         DB::table('products')->insert([
             'name' => 'Samsung Tab 7',
-            'description' => 'Samsung Galaxy Tab S7 com 256GB de armazenamento. Tela Super AMOLED de 11 polegadas, processador Snapdragon 865+ e suporte a S Pen.',
+            'description' => 'Samsung Galaxy Tab S7 256GB de armazenamento.Tela Super AMOLED de 11 polegadas, processador Snapdragon 865+ e suporte a S Pen.',
             'img' => '/img/8.jpg',
-            'cost' => 1200,
+            'cost' => 900,
             'owner_id' => 1,
             'category_id' => 2,
         ]);
 
         DB::table('products')->insert([
             'name' => 'Lenovo M10',
-            'description' => 'Lenovo Tab M10 com 128GB de armazenamento. Tela Full HD de 10.3 polegadas, ideal para assistir vídeos e navegar na internet.',
+            'description' => 'Lenovo Tab M10 com 128GB de armazenamento.Tela Full HD de 10.3 polegadas,ideal para assistir vídeos e navegar na internet.',
             'img' => '/img/9.jpg',
-            'cost' => 1200,
+            'cost' => 700,
             'owner_id' => 1,
             'category_id' => 2,
+        ]);
+
+        DB::table('products')->insert([
+            'name' => 'Carregador sem fio',
+            'description' => 'Carregador sem fio de 15W para smartphones. Compatível com todos os modelos de smartphones com carregamento sem fio.',
+            'img' => '/img/carregador.jpg',
+            'cost' => 50,
+            'owner_id' => 1,
+            'category_id' => 3,
+        ]);
+
+        DB::table('products')->insert([
+            'name' => 'AirPods Pro',
+            'description' => 'Fones de ouvido sem fio Apple AirPods Pro com cancelamento de ruído. Conexão automática com dispositivos Apple e qualidade de som superior.',
+            'img' => '/img/airpod.jpg',
+            'cost' => 200,
+            'owner_id' => 1,
+            'category_id' => 3,
+        ]);
+
+        DB::table('products')->insert([
+            'name' => 'Samsung Galaxy Buds',
+            'description' => 'Fones de ouvido sem fio Samsung Galaxy Buds com cancelamento de ruído. Conexão automática com dispositivos Samsung e qualidade de som superior.',
+            'img' => '/img/buds.jpg',
+            'cost' => 299,
+            'owner_id' => 1,
+            'category_id' => 3,
         ]);
     }
 }
