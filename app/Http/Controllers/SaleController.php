@@ -21,6 +21,9 @@ class SaleController extends Controller
         $user = Auth::user();
         $vendas = $user->sales;
 
+        
+
+
         return view('sales.index', ['compras' => $vendas]);
     }
 

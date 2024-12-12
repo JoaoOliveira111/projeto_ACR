@@ -56,7 +56,7 @@ class ProductController extends Controller
             $image = $request->file('img');
 
             $iname = "prod_" . time();
-            $folder = "/img/produtos/";
+            $folder = "img/produtos/";
             $fileName = $iname . '.' . $image->getClientOriginalExtension();
             $filePath = $folder . $fileName;
 

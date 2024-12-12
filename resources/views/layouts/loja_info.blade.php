@@ -41,7 +41,7 @@
     </div>
 
     <footer>
-        <p>Contactos - <a href="{{ route('contact.create') }}">João Oliveira &copy; 2024</a></p>
+        <p> <a href="{{ route('contact.create') }}">Contactos</a></p>
     </footer>
 </body>
 

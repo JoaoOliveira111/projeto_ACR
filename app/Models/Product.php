@@ -15,7 +15,7 @@ class Product extends Model
      * Get the user that owns the Product
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user():BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'owner_id', 'id');
     }
@@ -25,7 +25,7 @@ class Product extends Model
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
 
-    public function category():BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
